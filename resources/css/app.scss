@@ -1,0 +1,107 @@
+$fondo-pantalla: #f8fafc; 
+$blanco-puro: #ffffff;      // Blanco puro para la tarjeta
+$azul-principal: #2563eb;   // El azul de tu botón y enlaces
+$azul-oscuro: #1d4ed8;      // Azul un poco más oscuro para cuando pases el ratón
+$texto-oscuro: #1e293b;     // Color oscuro para las letras
+
+body {
+    background-color: $fondo-pantalla;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+        display: flex;
+    justify-content: center; // Centra horizontalmente
+    align-items: center;     // Centra verticalmente
+    min-height: 100vh;       // Ocupa el 100% de la altura del navegador
+}
+
+.login-card {
+    background-color: $blanco-puro;
+    padding: 2.5rem;
+    border-radius: 10px;                     // Bordes suavizados/redondeados
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); // Sombra muy fina para dar elegancia
+    width: 100%;
+    max-width: 380px;                        // Ancho máximo de la tarjeta
+
+    h1 {
+        color: $azul-principal;
+        font-size: 1.1rem;
+        margin-top: 0;
+        margin-bottom: 0.3rem;
+    }
+
+    h2 {
+        color: $texto-oscuro;
+        font-size: 1.6rem;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+    }
+
+
+    .form-group {
+        margin-bottom: 1.2rem;
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: $texto-oscuro;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box; 
+            font-size: 0.95rem;
+
+            
+            &:focus {
+                outline: none;
+                border-color: $azul-principal;
+            }
+        }
+    }
+
+    // Casilla de Recordar-me
+    .form-group-checkbox {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        color: $texto-oscuro;
+    }
+
+    // Enlace de recuperar contraseña (en azul)
+    .form-link {
+        margin-bottom: 1.5rem;
+
+        a {
+            color: $azul-principal;
+            text-decoration: none;
+            font-size: 0.85rem;
+
+            &:hover {
+                text-decoration: underline; // Subraya al pasar el ratón
+            }
+        }
+    }
+
+    
+    .btn-submit {
+        width: 100%;
+        background-color: $azul-principal;
+        color: $blanco-puro;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+
+        // Efecto al pasar el ratón por encima del botón
+        &:hover {
+            background-color: $azul-oscuro;
+        }
+    }
+}
