@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskFlow y Gestor de Incidencias</title>
+    @vite('resources/css/app.scss')
+    @vite('resources/js/app.js')
+
 </head>
 <body>
     <header>
         <nav>
-            <h2>TaskFlow</h2>
+            
         </nav>
     </header>
 
