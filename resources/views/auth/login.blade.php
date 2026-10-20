@@ -31,6 +31,9 @@
                         placeholder="tu@email.com"
                         required
                     >
+                    @error('email')
+                        <span class="text-error" style="color: red;">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <!-- Contraseña -->

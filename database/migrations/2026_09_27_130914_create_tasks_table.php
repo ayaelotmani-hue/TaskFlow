@@ -12,25 +12,26 @@ return new class extends Migration
     public function up(): void
 {
     Schema::create('tasks', function (Blueprint $table) {
-        $table->id();
-        $table->string('titulo');
-        $table->text('descripcion');
-        $table->string('prioridad');
-        $table->string('estado');
-        $table->date('fecha');
-        $table->string('categoria');
+    $table->id();
+    $table->string('titulo');
+    $table->text('descripcion');
+    
+    // Transformamos 'prioridad' en un ENUM cerrado
+    $table->enum('prioridad', ['alta', 'mitjana', 'baixa']);
+    
+    // Transformamos 'estado' en un ENUM cerrado alineado con tu enunciado
+    $table->enum('estado', ['pendiente', 'en_proces', 'completades']);
+    
+    $table->date('fecha');
+    $table->string('categoria');
 
-        $table->foreignId('user_id')
-              ->constrained('users')
-              ->onDelete('cascade');
+    $table->foreignId('user_id')
+          ->constrained('users')
+          ->onDelete('cascade');
 
-        $table->timestamps();
-    });
+    $table->timestamps();
+});
 }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('tasks');
