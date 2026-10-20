@@ -1,107 +1,129 @@
-$fondo-pantalla: #ffffff; 
-$blanco-puro: #ffffff;      // Blanco puro para la tarjeta
-$azul-principal: #eb256a;   // El azul de tu botón y enlaces
-$azul-oscuro: #1d4ed8;      // Azul un poco más oscuro para cuando pases el ratón
-$texto-oscuro: #1e293b;     // Color oscuro para las letras
-
 body {
-    background-color: $fondo-pantalla;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-        display: flex;
-    justify-content: center; // Centra horizontalmente
-    align-items: center;     // Centra verticalmente
-    min-height: 100vh;       // Ocupa el 100% de la altura del navegador
+    background-color:#EEF2FF;
 }
 
-.login-card {
-    background-color: $blanco-puro;
-    padding: 2.5rem;
-    border-radius: 10px;                     // Bordes suavizados/redondeados
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08); // Sombra muy fina para dar elegancia
-    width: 100%;
-    max-width: 380px;                        // Ancho máximo de la tarjeta
+.login-container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    max-width: 1200px;
+    min-height: 600px;
+    margin: 60px auto;
+    background-color: #ffff; 
+    border-radius: 19px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    font-family: Verdana, sans-serif;
+}
+
+.login-image {
+    width: 45%;
+    min-height: 580px;
+    overflow: hidden;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.login-content {
+    width: 55%;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
 
     h1 {
-        color: $azul-principal;
-        font-size: 1.1rem;
-        margin-top: 0;
-        margin-bottom: 0.3rem;
+        color: #202f70;
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 24px;
     }
 
     h2 {
-        color: $texto-oscuro;
-        font-size: 1.6rem;
-        margin-top: 0;
-        margin-bottom: 1.5rem;
+        text-align: center;
+        font-size: 26px;
+        margin-bottom: 28px;
     }
 
-
     .form-group {
-        margin-bottom: 1.2rem;
+        margin-bottom: 20px;
+        margin-left: 20px;
 
         label {
             display: block;
-            margin-bottom: 0.4rem;
-            color: $texto-oscuro;
-            font-size: 0.9rem;
             font-weight: 600;
+            margin-bottom: 6px;
         }
 
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            box-sizing: border-box; 
-            font-size: 0.95rem;
-
-            
-            &:focus {
-                outline: none;
-                border-color: $azul-principal;
-            }
+        input {
+            width: 80%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #f8f2f2;
+            box-sizing: border-box;
         }
     }
 
-    // Casilla de Recordar-me
-    .form-group-checkbox {
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-        color: $texto-oscuro;
-    }
-
-    // Enlace de recuperar contraseña (en azul)
-    .form-link {
-        margin-bottom: 1.5rem;
-
-        a {
-            color: $azul-principal;
-            text-decoration: none;
-            font-size: 0.85rem;
-
-            &:hover {
-                text-decoration: underline; // Subraya al pasar el ratón
-            }
-        }
-    }
-
-    
-    .btn-submit {
-        width: 100%;
-        background-color: $azul-principal;
-        color: $blanco-puro;
-        padding: 0.8rem;
+    .btn-login {
+        width: 80%;               
+        margin-left: 20px;         
+        padding: 14px;             
         border: none;
-        border-radius: 6px;
-        font-size: 1rem;
+        border-radius: 4px;
+        background-color: #2563EB; 
+        color: #ffffff;            
         font-weight: bold;
+        font-size: 16px;
         cursor: pointer;
+        transition: background-color 0.3s ease;
 
-        // Efecto al pasar el ratón por encima del botón
         &:hover {
-            background-color: $azul-oscuro;
+            background-color: #1D4ED8; 
+        }
+    } 
+
+    .separator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80%;                
+        margin: 24px 0 24px 20px; 
+        
+        p {
+            padding: 0 16px;       
+            color: #6B7280;        
+            font-weight: 600;      
+            margin: 0;             
+        }
+        
+        span {
+            flex: 1;               
+            height: 1px;           
+            background-color: #E5E7EB; 
+        }
+    }
+
+    .btn-google {
+        width: 80%;               
+        margin-left: 20px;         
+        padding: 14px;             
+        border: none;
+        border-radius: 4px;
+        background-color: #2563EB; 
+        color: #ffffff;            
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #1D4ED8; 
         }
     }
 }

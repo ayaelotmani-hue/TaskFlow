@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+
     public function login(Request $request)
     {
         $request->validate([
@@ -20,18 +21,6 @@ class AuthController extends Controller
         }else{
             print("Usuario no existe.");
         }
-        if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-])) {
-    // Login correcto
-    if (Auth::user()->role == 'admin') {
-        // enviar a admin
-    } else {
-        // enviar a trabajador
     }
-} else {
-    // Login incorrecto
-}
-    }
-}
+} 
+   

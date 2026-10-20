@@ -1,32 +1,20 @@
-const formulario = document.querySelector(".login-form");
-
-formulario.addEventListener("submit", function(event) {
-
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    let valido = true;
-
-    // Comprobar si el email está vacío
-    if (email === "") {
-        alert("El email no puede estar vacío");
-        valido = false;
-
-    } else if (!email.includes("@")) {
-        alert("El email debe contener @");
-        valido = false;
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const error= document.getElementById("error");
+const form = document.getElementById("form");
+form.addEventListener('submit', function(e){
+    let messages=[]
+    if(password.value.length<=6){
+        messages.push('La contraseña debe tener más de 6 caracteres')
     }
-
-    // Comprobar si la contraseña está vacía
-    if (password === "") {
-        alert("La contraseña no puede estar vacía");
-        valido = false;
+    if(password.value.length >= 20) {
+        messages.push('La contraseña debe tener menos de 20 caracteres.');
     }
-
-    // Si hay algún error, no enviamos el formulario
-    if (valido === false) {
-        event.preventDefault();
+    if(messages.length>0){
+      e.preventDefault();
+      error.innerText=messages.join('\n')
     }
-
 });
+
+
 
