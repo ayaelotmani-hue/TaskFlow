@@ -13,7 +13,7 @@
                 Dashboard
             </a>
 
-            <a href="#" class="sidebar__link">
+            <a href="/tareas" class="sidebar__link">
                 Tareas
             </a>
 
@@ -89,7 +89,7 @@
         <article class="stat-card">
             <h3>Usuarios registrados</h3>
             <!-- PASO E: Pintamos el número total de usuarios (SIN count porque ya viene contado) -->
-            <p class="stat-card__number">{{ $totalUsuariosSistema }}</p>
+            <p class="stat-card__number">{{ $totalUsuarios }}</p>
             <p>Cuentas del sistema</p>
         </article>
 
@@ -100,32 +100,84 @@
 
             <article class="dashboard-panel">
                 <h3>Tareas por estado</h3>
-                <p>Aquí aparecerá el resumen de tareas por estado.</p>
+
+                <ul class="status-summary" style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;">
+                    <span>Pendientes:</span>
+                    <strong>{{ $tareasPendientes->count() }}</strong>
+                </li>
+                <li style="margin-bottom: 8px;">
+                    <span>En proceso:</span>
+                    <strong>{{ $tareasEnProceso->count() }}</strong>
+                </li>
+                <li style="margin-bottom: 8px;">
+                    <span>Completadas:</span>
+                    <strong>{{ $tareasCompletadas->count() }}</strong>
+                </li>
+                </ul>
             </article>
 
             <article class="dashboard-panel">
                 <h3>Tareas por prioridad</h3>
-                <p>Aquí aparecerá el resumen por prioridad.</p>
+                <div class="panel-stat" style="margin-bottom: 8px;">
+                    <span>Prioridad Alta:</span>
+                    <strong>{{ $tareasAlta->count() }}</strong>
+                </div>
+
+                <div class="panel-stat" style="margin-bottom: 8px;">
+                    <span>Prioridad Media:</span>
+                    <strong>{{ $tareasMitjana->count() }}</strong>
+                </div>
+
+                <div class="panel-stat" style="margin-bottom: 8px;">
+                    <span>Prioridad Baja:</span>
+                    <strong>{{ $tareasBaixa->count() }}</strong>
+                </div>
             </article>
 
             <article class="dashboard-panel">
                 <h3>Últimas tareas</h3>
-                <p>Aquí aparecerán las últimas tareas creadas.</p>
+
+                    @if($ultimasTareas->isNotEmpty())
+                    <!-- Recorremos las 3 últimas tareas una a una -->
+                        @foreach($ultimasTareas as $tarea)
+                            <div class="panel-stat" style="margin-bottom: 8px; display: flex; justify-content: space-between;">
+                                <!-- Pintamos el título de la tarea -->
+                                <span>{{ $tarea->titulo }}</span>
+                                
+                                <!-- Pintamos su prioridad en negrita -->
+                                <strong>({{ $tarea->prioridad }})</strong>
+                            </div>
+                        @endforeach
+                    @else
+                        <!-- Si no hay ninguna tarea en la base de datos -->
+                        <p>No hay tareas registradas en el sistema.</p>
+                    @endif
             </article>
 
             <article class="dashboard-panel">
                 <h3>Tareas por categoría</h3>
-                <p>Aquí aparecerá el resumen por categoría.</p>
-            </article>
+                  <!-- Recorremos las categorías  -->
+                @foreach($tareasPorCategoria as $nombreCategoria => $tareasDeEsteGrupo)
+                    <div class="panel-stat" style="margin-bottom: 8px;">
+                        <span>{{ $nombreCategoria }}:</span>
+                        <strong>{{ $tareasDeEsteGrupo->count() }}</strong>
+                    </div>
+                @endforeach
 
-            <article class="dashboard-panel">
-                <h3>Tareas recientes</h3>
-                <p>Aquí aparecerá el listado de tareas recientes.</p>
             </article>
 
             <article class="dashboard-panel">
                 <h3>Usuarios</h3>
-                <p>Aquí aparecerán los usuarios registrados.</p>
+                @foreach($listaUsuarios as $usuario)
+                    <div class="panel-stat" style="margin-bottom: 8px; display: flex; justify-content: space-between;">
+                        <!-- Pintamos el nombre real de cada usuario -->
+                        <span>{{ $usuario->name }}</span>
+                        
+                        <!-- Pintamos su rol asignado en negrita -->
+                        <strong>({{ $usuario->role }})</strong>
+                    </div>
+                @endforeach
             </article>
 
         </section>
